@@ -86,5 +86,10 @@ public class AdminHomePage {
 	public void clickUsers() {
 		wait.until(ExpectedConditions.elementToBeClickable(this.users)).click();
 	}
+	
+	// verify admin home page is dispalyed or  not
+	public boolean logoutIsDisplayed() {
+		return this.logout.isDisplayed();
+	}
 
 }
