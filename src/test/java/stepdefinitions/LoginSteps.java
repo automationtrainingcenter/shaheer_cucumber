@@ -17,18 +17,22 @@ import cucumber.api.java.en.When;
 public class LoginSteps {
 	private WebDriver driver;
 	private BankHomePage bankHomePage;
+	private CommonSteps commonSteps;
+	
+	public LoginSteps(CommonSteps commonSteps) {
+		this.commonSteps = commonSteps;
+		this.driver = commonSteps.getDriver();
+	}
+	
 
 	@Given("admin is in bank home page")
 	public void admin_is_in_bank_home_page() {
-		System.setProperty("webdriver.chrome.driver", ".\\drivers\\chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.get("http://primusbank.qedgetech.com/");
-		driver.manage().window().maximize();
-		bankHomePage = new BankHomePage(driver);
+		
 	}
 
 	@When("admin enters valid user name")
 	public void admin_enters_valid_user_name() {
+		bankHomePage = new BankHomePage(driver);
 		bankHomePage.fillUserName("Admin");
 	}
 
@@ -59,5 +63,18 @@ public class LoginSteps {
 		String text = alert.getText();
 		alert.accept();
 		Assert.assertTrue(text.toLowerCase().contains("incorrect"));
+	}
+
+	@When("admin enters invalid username")
+	public void admin_enters_invalid_username() {
+		bankHomePage.fillUserName("adfasfsadf");
+	}
+
+	@Then("admin can see an error message saying please fill banker and password")
+	public void admin_can_see_an_error_message_saying_please_fill_banker_and_password() {
+		Alert alert = driver.switchTo().alert();
+		String text = alert.getText();
+		alert.accept();
+		Assert.assertTrue(text.toLowerCase().contains("please fill"));
 	}
 }
