@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utilities.JavascriptHelper;
+
 public class RoleCreationPage {
 	private WebDriver driver;
 	private WebDriverWait wait;
@@ -72,5 +74,9 @@ public class RoleCreationPage {
 	public RoleDetailsPage clickCancel() {
 		wait.until(ExpectedConditions.elementToBeClickable(this.cancel)).click();
 		return PageFactory.initElements(driver, RoleDetailsPage.class);
+	}
+	
+	public boolean isFormReset() {
+		return JavascriptHelper.getEditBoxText(driver, this.roleName).isEmpty();
 	}
 }

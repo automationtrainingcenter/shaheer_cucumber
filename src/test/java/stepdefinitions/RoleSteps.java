@@ -20,7 +20,7 @@ public class RoleSteps {
 	private RoleDetailsPage roleDetailsPage;
 	private RoleCreationPage roleCreationPage;
 	private Alert alert;
-	
+
 	public RoleSteps(CommonSteps commonSteps) {
 		this.commonSteps = commonSteps;
 		this.driver = commonSteps.getDriver();
@@ -71,5 +71,16 @@ public class RoleSteps {
 		String text = alert.getText();
 		alert.accept();
 		Assert.assertTrue(text.toLowerCase().contains("new role"));
+	}
+
+	@When("admin click on reset button")
+	public void admin_click_on_reset_button() {
+		roleCreationPage = roleCreationPage.clickReset();
+	}
+
+	@Then("admin can see empty role creation form")
+	public void admin_can_see_empty_role_creation_form() {
+		Assert.assertTrue(roleCreationPage.isFormReset());
+
 	}
 }
