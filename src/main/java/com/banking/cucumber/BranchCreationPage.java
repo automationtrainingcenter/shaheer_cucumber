@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utilities.JavascriptHelper;
+
 public class BranchCreationPage {
 	private WebDriver driver;
 	private WebDriverWait wait;
@@ -59,12 +61,13 @@ public class BranchCreationPage {
 
 	// fill branch name
 	public void fillBranchName(String branchName) {
-		wait.until(ExpectedConditions.visibilityOf(this.branchName)).sendKeys(branchName);
+		wait.until(ExpectedConditions.visibilityOf(this.branchName)).clear();
+		this.branchName.sendKeys(branchName);
 
 	}
 
 	// fill address1
-	public void fillAddress1(String address){
+	public void fillAddress1(String address) {
 		wait.until(ExpectedConditions.visibilityOf(this.address)).sendKeys(address);
 	}
 
@@ -117,4 +120,8 @@ public class BranchCreationPage {
 		return PageFactory.initElements(driver, BranchDetailsPage.class);
 	}
 
+	// isFormReset() which return true if form reset
+	public boolean isFormReset() {
+		return JavascriptHelper.getEditBoxText(driver, this.branchName).isEmpty() && JavascriptHelper.getEditBoxText(driver, this.zipCode).isEmpty();
+	}
 }

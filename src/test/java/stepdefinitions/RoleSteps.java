@@ -70,7 +70,7 @@ public class RoleSteps {
 	public void admin_can_see_role_created_successfully_with_some_id_message() {
 		String text = alert.getText();
 		alert.accept();
-		Assert.assertTrue(text.toLowerCase().contains("new role"));
+		Assert.assertTrue(text.toLowerCase().contains("new role123"));
 	}
 
 	@When("admin click on reset button")
