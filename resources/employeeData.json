@@ -1,0 +1,26 @@
+[
+	{
+		"emp_name": "ManagerOne",
+		"login_pass": "PasswordOne",
+		"role": "Teller",
+		"branch": "branchName"
+	},
+	{
+		"emp_name": "ManagerTwo",
+		"login_pass": "PasswordTwo",
+		"role": "Teller",
+		"branch": "branchName"
+	},
+	{
+		"emp_name": "ManagerThree",
+		"login_pass": "PasswordThree",
+		"role": "Teller",
+		"branch": "branchName"
+	},
+	{
+		"emp_name": "ManagerFour",
+		"login_pass": "PasswordFour",
+		"role": "Teller",
+		"branch": "branchName"
+	}
+]

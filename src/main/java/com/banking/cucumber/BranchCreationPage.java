@@ -61,8 +61,7 @@ public class BranchCreationPage {
 
 	// fill branch name
 	public void fillBranchName(String branchName) {
-		wait.until(ExpectedConditions.visibilityOf(this.branchName)).clear();
-		this.branchName.sendKeys(branchName);
+		wait.until(ExpectedConditions.visibilityOf(this.branchName)).sendKeys(branchName);
 
 	}
 

@@ -105,10 +105,16 @@ public class BranchSteps {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		List<Map<String, String>> dataRows = dataTable.asMaps();
 		for (Map<String, String> dataRow : dataRows) {
-			branchCreationPage.fillBranchName(dataRow.get("branchName") + Keys.TAB);
+			branchCreationPage.fillBranchName(dataRow.get("branchName")+Keys.TAB);
 			Alert alert = wait.until(ExpectedConditions.alertIsPresent());
 			System.out.println(alert.getText());
 			alert.accept();
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}
