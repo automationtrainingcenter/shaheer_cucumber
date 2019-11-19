@@ -76,4 +76,20 @@ public class EmployeeSteps {
 			e.printStackTrace();
 		}
 	}
+
+	@When("admin click reset buttion after filling data from excel file")
+	public void admin_click_reset_buttion_after_filling_data_from_excel_file(
+			io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
+		List<Excel> excel = dataTable.asList(Excel.class);
+		Excel excelFile = excel.get(0);
+		List<List<String>> excelData = excelFile.getExcelData();
+		for (List<String> row : excelData) {
+			employeeCreationPage.fillEmpName(row.get(0));
+			employeeCreationPage.fillLoginPass(row.get(1));
+			employeeCreationPage.selectRole(row.get(2));
+			employeeCreationPage.selectBranch(row.get(3));
+			employeeCreationPage.clickReset();
+			Thread.sleep(2000);
+		}
+	}
 }
