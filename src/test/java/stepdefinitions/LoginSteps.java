@@ -18,21 +18,19 @@ public class LoginSteps {
 	private WebDriver driver;
 	private BankHomePage bankHomePage;
 	private CommonSteps commonSteps;
-	
+
 	public LoginSteps(CommonSteps commonSteps) {
 		this.commonSteps = commonSteps;
 		this.driver = commonSteps.getDriver();
 	}
-	
 
 	@Given("admin is in bank home page")
 	public void admin_is_in_bank_home_page() {
-		
+		bankHomePage = new BankHomePage(driver);
 	}
 
 	@When("admin enters valid user name")
 	public void admin_enters_valid_user_name() {
-		bankHomePage = new BankHomePage(driver);
 		bankHomePage.fillUserName("Admin");
 	}
 

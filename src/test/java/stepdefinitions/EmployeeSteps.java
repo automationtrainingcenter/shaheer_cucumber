@@ -72,7 +72,6 @@ public class EmployeeSteps {
 				Thread.sleep(2000);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

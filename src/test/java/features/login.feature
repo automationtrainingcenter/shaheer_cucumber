@@ -1,6 +1,8 @@
 # login requirement
+@login 
 Feature: As a Admin I want to do login so that I can see welcome message
 
+	@login_valid @smoke
   Scenario: login with valid credentials
     Given admin is in bank home page
     When admin enters valid user name
@@ -8,6 +10,7 @@ Feature: As a Admin I want to do login so that I can see welcome message
     And admin click on login button
     Then admin cas see welcome to Admin message with logout link
 
+	@login_invalid
   Scenario: login with invalid password
     Given admin is in bank home page
     When admin enters valid user name
@@ -15,13 +18,15 @@ Feature: As a Admin I want to do login so that I can see welcome message
     And admin click on login button
     Then admin can see an error message saying invalid banker name or password
 
+	@login_invalid
   Scenario: login with invalid username
     Given admin is in bank home page
     When admin enters invalid username
     And admin enters valid password
     And admin click on login button
     Then admin can see an error message saying invalid banker name or password
-
+	
+	@login_invalid
   Scenario: login with blank data
     Given admin is in bank home page
     When admin click on login button
